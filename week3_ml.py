@@ -30,3 +30,16 @@ dummy = DummyClassifier(strategy='most_frequent').fit(x_train, y_train)
 
 print('svm accuracy', svm.score(x_test, y_test))
 print('dummy accuracy', dummy.score(x_test, y_test))
+
+"""**Confusion Matrix**
+
+Binary Confusion Matrix
+"""
+
+from sklearn.dummy import DummyClassifier
+from sklearn.metrics import confusion_matrix
+
+dummy = DummyClassifier(strategy='most_frequent').fit(x_train, y_train)
+y_predict = dummy.predict(x_test)
+confusion = confusion_matrix(y_test, y_predict)
+confusion
