@@ -53,3 +53,13 @@ svm = SVC(kernel='rbf', C=3).fit(x_train, y_train)
 y_predict = svm.predict(x_test)
 confusion = confusion_matrix(y_test, y_predict)
 confusion, svm.score(x_test, y_test)
+
+"""With a logistic regressor"""
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+logis = LogisticRegression().fit(x_train, y_train)
+y_predict = logis.predict(x_test)
+confusion = confusion_matrix(y_test, y_predict)
+confusion, logis.score(x_test, y_test)
