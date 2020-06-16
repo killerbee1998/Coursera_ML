@@ -63,3 +63,28 @@ logis = LogisticRegression().fit(x_train, y_train)
 y_predict = logis.predict(x_test)
 confusion = confusion_matrix(y_test, y_predict)
 confusion, logis.score(x_test, y_test)
+
+"""**Other metrics**
+
+Recall -> When we would rather have a false positive than risk a false negative
+
+Precision -> When we would rather have a false negative than risk any kind of false positive
+
+F1 score -> harmonic mean of recall and precision
+
+Below we use the previous logistic regressor to show these scores
+"""
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.linear_model import LogisticRegression
+
+y_train = y_train.map(lambda x: 1 if x==1 else 0)
+y_test = y_test.map(lambda x: 1 if x==1 else 0)
+
+logis = LogisticRegression().fit(x_train, y_train)
+y_predict = logis.predict(x_test)
+
+print('accuracy', accuracy_score(y_test, y_predict))
+print('recall', recall_score(y_test, y_predict))
+print('precision', precision_score(y_test, y_predict))
+print('f1', f1_score(y_test, y_predict))
