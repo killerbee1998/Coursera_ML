@@ -88,3 +88,12 @@ print('accuracy', accuracy_score(y_test, y_predict))
 print('recall', recall_score(y_test, y_predict))
 print('precision', precision_score(y_test, y_predict))
 print('f1', f1_score(y_test, y_predict))
+
+"""A Classification report reports all 4 of these metrics at once
+
+Suppport simpl shows the number of positive labels
+"""
+
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_predict, target_names=['label 1', 'other label']))
