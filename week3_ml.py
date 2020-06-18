@@ -118,3 +118,9 @@ plt.ylabel('True Values')
 plt.show()
 
 svm.score(x_test, y_test)
+
+"""Multi class classification report"""
+
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_predict, target_names=['1','2','3','4']))
