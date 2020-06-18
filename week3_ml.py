@@ -78,22 +78,43 @@ Below we use the previous logistic regressor to show these scores
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.linear_model import LogisticRegression
 
-y_train = y_train.map(lambda x: 1 if x==1 else 0)
-y_test = y_test.map(lambda x: 1 if x==1 else 0)
+y_train_2d = y_train.map(lambda x: 1 if x==1 else 0)
+y_test_2d = y_test.map(lambda x: 1 if x==1 else 0)
 
-logis = LogisticRegression().fit(x_train, y_train)
+logis = LogisticRegression().fit(x_train, y_train_2d)
 y_predict = logis.predict(x_test)
 
-print('accuracy', accuracy_score(y_test, y_predict))
-print('recall', recall_score(y_test, y_predict))
-print('precision', precision_score(y_test, y_predict))
-print('f1', f1_score(y_test, y_predict))
+print('accuracy', accuracy_score(y_test_2d, y_predict))
+print('recall', recall_score(y_test_2d, y_predict))
+print('precision', precision_score(y_test_2d, y_predict))
+print('f1', f1_score(y_test_2d, y_predict))
 
 """A Classification report reports all 4 of these metrics at once
 
-Suppport simpl shows the number of positive labels
+Suppport simply shows the number of positive labels
 """
 
 from sklearn.metrics import classification_report
 
-print(classification_report(y_test, y_predict, target_names=['label 1', 'other label']))
+print(classification_report(y_test_2d, y_predict, target_names=['label 1', 'other label']))
+
+"""MultiClass Confusion Matrix"""
+
+import matplotlib.pyplot as plt 
+import pandas as pd
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+from sklearn.svm import SVC
+
+svm = SVC(kernel = 'linear', C=6).fit(x_train, y_train)
+y_predict = svm.predict(x_test)
+confusion = confusion_matrix(y_test,y_predict)
+confusion = pd.DataFrame(confusion)
+
+plt.figure()
+sns.heatmap(confusion, annot = True)
+plt.xlabel('Predicted Values')
+plt.ylabel('True Values')
+plt.show()
+
+svm.score(x_test, y_test)
