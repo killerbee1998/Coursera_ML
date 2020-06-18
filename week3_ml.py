@@ -127,7 +127,6 @@ print(classification_report(y_test, y_predict, target_names=['1','2','3','4']))
 
 """Dummy Regressor"""
 
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, median_absolute_error
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_diabetes
 import numpy as np
@@ -143,3 +142,24 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, random_state = 0)
 
 dummy = DummyRegressor(strategy='mean').fit(x_train, y_train)
 y_dummy_predict = dummy.predict(x_test)
+
+"""Regression metrics"""
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, median_absolute_error
+
+lin = LinearRegression().fit(x_train, y_train)
+y_predict = lin.predict(x_test)
+
+print("DUMMY\n")
+print("r2 score", r2_score(y_test, y_dummy_predict))
+print("mean abs error", mean_absolute_error(y_test, y_dummy_predict))
+print("mean sq error", mean_squared_error(y_test, y_dummy_predict))
+print("median abs error", median_absolute_error(y_test, y_dummy_predict))
+print("\n")
+
+print("Linear Regressor\n")
+print("r2 score", r2_score(y_test, y_predict))
+print("mean abs error", mean_absolute_error(y_test, y_predict))
+print("mean sq error", mean_squared_error(y_test, y_predict))
+print("median abs error", median_absolute_error(y_test, y_predict))
+print("\n")
