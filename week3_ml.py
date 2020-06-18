@@ -124,3 +124,22 @@ svm.score(x_test, y_test)
 from sklearn.metrics import classification_report
 
 print(classification_report(y_test, y_predict, target_names=['1','2','3','4']))
+
+"""Dummy Regressor"""
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, median_absolute_error
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_diabetes
+import numpy as np
+import pandas as pd
+from sklearn.dummy import DummyRegressor
+from sklearn.linear_model import LinearRegression
+
+diabetes = load_diabetes()
+x = diabetes.data[:, None, 6]
+y = diabetes.target
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, random_state = 0)
+
+dummy = DummyRegressor(strategy='mean').fit(x_train, y_train)
+y_dummy_predict = dummy.predict(x_test)
