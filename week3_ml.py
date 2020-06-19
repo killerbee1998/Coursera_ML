@@ -163,3 +163,33 @@ print("mean abs error", mean_absolute_error(y_test, y_predict))
 print("mean sq error", mean_squared_error(y_test, y_predict))
 print("median abs error", median_absolute_error(y_test, y_predict))
 print("\n")
+
+# plot of linear and dummy regressor
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.scatter(x_test, y_test)
+plt.plot(x_test, y_dummy_predict, c='r')
+plt.plot(x_test, y_predict, c='g')
+
+"""Model Selection using metrics
+
+Cross validation
+"""
+
+from sklearn.svm import SVC
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split, cross_val_score
+
+
+digits = load_digits()
+x = digits.data
+y = digits.target==1
+
+sv = SVC(kernel = 'linear')
+
+print("Cross Validation\n")
+print("accuracy", cross_val_score(sv, x,y, cv = 5))
+print("AUC", cross_val_score(sv, x,y, cv = 5, scoring = "roc_auc"))
+print("Recall", cross_val_score(sv, x,y, cv = 5, scoring="recall"))
+print("\n")
