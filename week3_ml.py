@@ -193,3 +193,35 @@ print("accuracy", cross_val_score(sv, x,y, cv = 5))
 print("AUC", cross_val_score(sv, x,y, cv = 5, scoring = "roc_auc"))
 print("Recall", cross_val_score(sv, x,y, cv = 5, scoring="recall"))
 print("\n")
+
+"""Grid Search"""
+
+from sklearn.svm import SVC
+from sklearn.model_selection import  GridSearchCV, train_test_split
+from sklearn.datasets import load_digits
+from sklearn.metrics import roc_auc_score
+
+digit = load_digits()
+x,y = digit.data, digit.target==1
+x_train, x_test, y_train, y_test = train_test_split(x, y, random_state = 0)
+
+clf=SVC(kernel='rbf')
+grid_vals = {'gamma': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]}
+
+grid_acc = GridSearchCV(clf, param_grid=grid_vals)
+grid_acc.fit(x_train, y_train)
+y_fn_scores_acc = grid_acc.decision_function(x_test)
+print("Acc best parameter", grid_acc.best_params_)
+print("Acc best score", grid_acc.best_score_)
+
+grid_auc = GridSearchCV(clf, param_grid=grid_vals, scoring = 'roc_auc')
+grid_auc.fit(x_train, y_train)
+y_fn_scores_auc = grid_auc.decision_function(x_test)
+print("auc best parameter", grid_auc.best_params_)
+print("auc best score", grid_auc.best_score_)
+
+grid_rec = GridSearchCV(clf, param_grid=grid_vals, scoring = 'recall')
+grid_rec.fit(x_train, y_train)
+y_fn_scores_rec = grid_rec.decision_function(x_test)
+print("recall best parameter", grid_rec.best_params_)
+print("recall best score", grid_rec.best_score_)
