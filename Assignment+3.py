@@ -56,12 +56,19 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 # 
 # *This function should a return a tuple with two floats, i.e. `(accuracy score, recall score)`.*
 
-# In[14]:
+# In[ ]:
 
 def answer_two():
     from sklearn.dummy import DummyClassifier
     from sklearn.metrics import recall_score
-
+    
+    dummy = DummyClassifier(strategy='most_frequent').fit(X_train,y_train)
+    acc = dummy.score(X_test, y_test)
+    
+    pred = dummy.predict(X_test)
+    r = recall_score(y_test, pred)
+    
+    return (acc, r)
 
 answer_two()
 
