@@ -85,6 +85,14 @@ def answer_three():
     from sklearn.metrics import recall_score, precision_score
     from sklearn.svm import SVC
 
+    clf = SVC().fit(X_train, y_train)
+    pred = clf.predict(X_test)
+    
+    acc = clf.score(X_test, y_test)
+    r = recall_score(y_test, pred)
+    p = precision_score(y_test, pred)
+    
+    return (acc, r, p)
 
 answer_three()
 
