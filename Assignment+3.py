@@ -26,7 +26,7 @@ import pandas as pd
 # 
 # *This function should return a float between 0 and 1.* 
 
-# In[12]:
+# In[2]:
 
 def answer_one():
     
@@ -56,7 +56,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 # 
 # *This function should a return a tuple with two floats, i.e. `(accuracy score, recall score)`.*
 
-# In[ ]:
+# In[4]:
 
 def answer_two():
     from sklearn.dummy import DummyClassifier
@@ -79,7 +79,7 @@ answer_two()
 # 
 # *This function should a return a tuple with three floats, i.e. `(accuracy score, recall score, precision score)`.*
 
-# In[15]:
+# In[5]:
 
 def answer_three():
     from sklearn.metrics import recall_score, precision_score
@@ -109,9 +109,13 @@ def answer_four():
     from sklearn.metrics import confusion_matrix
     from sklearn.svm import SVC
 
-    # Your code here
+    clf = SVC(C = 1000000000, gamma=0.00000001).fit(X_train, y_train)
+    pred = clf.predict(X_test)
     
-    return # Return your answer
+    
+    return confusion_matrix(y_test, pred)
+
+answer_four()
 
 
 # ### Question 5
@@ -128,9 +132,9 @@ def answer_four():
 
 # In[7]:
 
+from sklearn.metrics import precision_recall_curve, roc_curve
+
 def answer_five():
-        
-    # Your code here
     
     return # Return your answer
 
