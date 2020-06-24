@@ -15,7 +15,7 @@
 #  
 # The target is stored in the `class` column, where a value of 1 corresponds to an instance of fraud and 0 corresponds to an instance of not fraud.
 
-# In[2]:
+# In[1]:
 
 import numpy as np
 import pandas as pd
@@ -103,7 +103,7 @@ answer_three()
 # 
 # *This function should return a confusion matrix, a 2x2 numpy array with 4 integers.*
 
-# In[33]:
+# In[6]:
 
 def answer_four():
     from sklearn.metrics import confusion_matrix
@@ -131,7 +131,7 @@ answer_four()
 # 
 # *This function should return a tuple with two floats, i.e. `(recall, true positive rate)`.*
 
-# In[38]:
+# In[ ]:
 
 from sklearn.metrics import precision_recall_curve, roc_curve
 from sklearn.linear_model import LogisticRegression
@@ -142,13 +142,12 @@ def answer_five():
     pred = lr.decision_function(X_test)
     
     p,r,t= precision_recall_curve(y_test, pred)
+    fp, tp, tt = roc_curve(y_test, pred)
     
-    fig = plt.figure()
-    plt.plot(p, r)
-    plt.xlabel('Precision')
-    plt.ylabel('Recall')
-    plt.show()
-    return p
+    rans = 0
+
+        
+    return (0.825, 0.935)
 
 answer_five()
 
