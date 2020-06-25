@@ -131,7 +131,7 @@ answer_four()
 # 
 # *This function should return a tuple with two floats, i.e. `(recall, true positive rate)`.*
 
-# In[ ]:
+# In[7]:
 
 from sklearn.metrics import precision_recall_curve, roc_curve
 from sklearn.linear_model import LogisticRegression
@@ -176,18 +176,24 @@ answer_five()
 # 
 # *Note: do not return a DataFrame, just the values denoted by '?' above in a numpy array. You might need to reshape your raw result to meet the format we are looking for.*
 
-# In[8]:
+# In[13]:
 
-def answer_six():    
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.linear_model import LogisticRegression
-
-    # Your code here
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
+def answer_six():
     
-    return # Return your answer
+    lr = LogisticRegression()
+    gvals = {'penalty': ['l1', 'l2'], 'C':[0.01, 0.1, 1, 10, 100]}
+    grid = GridSearchCV(lr, param_grid=gvals, scoring='recall')
+    grid.fit(X_train, y_train)
+    res = grid.cv_results_
+    
+    return res['mean_test_score'].reshape(5,2)
+
+answer_six()
 
 
-# In[9]:
+# In[12]:
 
 # Use the following function to help visualize results from the grid search
 def GridSearch_Heatmap(scores):
@@ -198,5 +204,5 @@ def GridSearch_Heatmap(scores):
     sns.heatmap(scores.reshape(5,2), xticklabels=['l1','l2'], yticklabels=[0.01, 0.1, 1, 10, 100])
     plt.yticks(rotation=0);
 
-#GridSearch_Heatmap(answer_six())
+GridSearch_Heatmap(answer_six())
 
