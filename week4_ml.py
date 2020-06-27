@@ -27,18 +27,26 @@ gas = GaussianNB().fit(x_train, y_train)
 print("Train", gas.score(x_train, y_train))
 print("Test", gas.score(x_test, y_test))
 
-"""Random Forest"""
+"""Random Forest vs"""
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_breast_cancer
 
-iris = load_iris()
-x = iris.data
-y = iris.target == 1
+f = load_breast_cancer()
+x = f.data
+y = f.target
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, random_state = 0)
-forest = RandomForestClassifier(n_estimators=10, random_state=0).fit(x_train, y_train)
+forest = RandomForestClassifier(n_estimators=22, random_state=0).fit(x_train, y_train)
 
+print("Random Forest")
 print("Test", forest.score(x_test,y_test))
 print("Train", forest.score(x_train, y_train))
+
+from sklearn.tree import DecisionTreeClassifier
+des = DecisionTreeClassifier().fit(x_train, y_train)
+
+print("Decision Tree")
+print("Test", des.score(x_test,y_test))
+print("Train", des.score(x_train, y_train))
