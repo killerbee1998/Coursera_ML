@@ -44,9 +44,21 @@ print("Random Forest")
 print("Test", forest.score(x_test,y_test))
 print("Train", forest.score(x_train, y_train))
 
+"""Decision Tree"""
+
 from sklearn.tree import DecisionTreeClassifier
 des = DecisionTreeClassifier().fit(x_train, y_train)
 
 print("Decision Tree")
 print("Test", des.score(x_test,y_test))
 print("Train", des.score(x_train, y_train))
+
+"""Gradient Boosted Classifier"""
+
+from sklearn.ensemble import GradientBoostingClassifier
+
+gra = GradientBoostingClassifier(max_depth = 2, learning_rate = 0.01, random_state=0).fit(x_train, y_train)
+
+print("Gradient Boosted Classifier")
+print("Test", gra.score(x_test,y_test))
+print("Train", gra.score(x_train, y_train))
