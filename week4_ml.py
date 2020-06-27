@@ -26,3 +26,19 @@ gas = GaussianNB().fit(x_train, y_train)
 
 print("Train", gas.score(x_train, y_train))
 print("Test", gas.score(x_test, y_test))
+
+"""Random Forest"""
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+x = iris.data
+y = iris.target == 1
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, random_state = 0)
+forest = RandomForestClassifier(n_estimators=10, random_state=0).fit(x_train, y_train)
+
+print("Test", forest.score(x_test,y_test))
+print("Train", forest.score(x_train, y_train))
