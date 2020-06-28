@@ -85,3 +85,9 @@ mlp.score(x_test, y_test)
 mlp2 = MLPClassifier(hidden_layer_sizes=[10,10],solver='lbfgs', random_state=0).fit(x_train, y_train)
 
 mlp2.score(x_test, y_test)
+
+"""Controlling weights of neural nets with L2 regularization(alpha)"""
+
+for i in [0.0001, 0.001, 0.01, 0.1, 1, 10,100]:
+  mlp3 = MLPClassifier(hidden_layer_sizes=[10,10], activation='tanh', solver='lbfgs', alpha=i).fit(x_train, y_train)
+  print(mlp3.score(x_test, y_test))
