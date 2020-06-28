@@ -66,11 +66,11 @@ print("Train", gra.score(x_train, y_train))
 """Neural Networks"""
 
 from sklearn.neural_network import MLPClassifier
-from sklearn.datasets import load_wine
+from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score, precision_score
 
-dataset = load_wine()
+dataset = load_iris()
 x = dataset.data
 y = dataset.target
 x_train, x_test, y_train, y_test = train_test_split(x, y, random_state = 0)
@@ -79,3 +79,9 @@ mlp = MLPClassifier(hidden_layer_sizes= 10, solver='lbfgs', random_state=0).fit(
 pred = mlp.predict(x_test)
 
 mlp.score(x_test, y_test)
+
+"""MLP with multiple hidden layers"""
+
+mlp2 = MLPClassifier(hidden_layer_sizes=[10,10],solver='lbfgs', random_state=0).fit(x_train, y_train)
+
+mlp2.score(x_test, y_test)
