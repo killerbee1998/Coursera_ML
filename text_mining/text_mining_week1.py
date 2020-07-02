@@ -26,3 +26,19 @@ print([i for i in sr if i.istitle()])
 
 # words that end with  g
 print([i for i in sr if i.endswith('g')])
+
+"""Python Text Basics(Part 2)(Set functions)"""
+
+s = "To be or not to be, that is the question"
+
+# tokenization
+sr = s.split(' ')
+print(sr)
+
+# set of unique words
+srs = set(sr)
+print(srs)
+
+# create set irrespective of capital letters
+srs = set([i.lower() for i in sr])
+print(srs)
