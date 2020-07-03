@@ -42,3 +42,41 @@ print(srs)
 # create set irrespective of capital letters
 srs = set([i.lower() for i in sr])
 print(srs)
+
+"""Python text basics(part 2.5)(word comparison)"""
+
+# check if sentence starts with, ends with letters
+print(s.startswith('T'))
+print(s.endswith('n'))
+
+# check if a word is in a sentence
+print('s' in s)
+
+# check if a words is in uppercase, lowercase, Title(starts with capital letters)
+print(sr[0].isupper())
+print(sr[0].islower())
+print(sr[0].istitle())
+
+# check if a word is made up of alphabets, digits or both
+print('pranha2'.isalpha())
+print('pranha2'.isdigit())
+print('pranha2'.isalnum())
+
+# make every word into lowercase, uppercase or title
+print(s.lower())
+print(s.upper())
+print(s.title())
+
+# join multiple strings
+print(sr[0].join(sr[1]))
+
+# take out spaces from before and after words
+print("   aaa     ".strip())
+print("    aaa    ".rstrip())
+
+# find words in strings from the front and back
+print(s.find("be"))
+print(s.rfind("be"))
+
+# replace a word in a string
+print(s.replace('be', 'Be'))
