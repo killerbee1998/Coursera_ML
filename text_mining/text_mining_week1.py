@@ -102,3 +102,12 @@ print(sr)
 #split without rogue spaces
 sr = s.strip().split(' ')
 print(sr)
+
+"""Python text basics(part 4.5)(changing text)"""
+
+# find in text
+print(s.find('o'))
+print(s.rfind('o'))
+
+# replace text
+print(s.replace('o', 'O'))
