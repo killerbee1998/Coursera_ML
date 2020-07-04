@@ -80,3 +80,15 @@ print(s.rfind("be"))
 
 # replace a word in a string
 print(s.replace('be', 'Be'))
+
+"""Python text basics(part 3)(words to characters)"""
+
+s = 'oudougadou'
+sr = s.split('ou')
+print(sr)
+
+print('ou'.join(sr))
+
+#list of characters
+sl = list(s)
+print(sl)
