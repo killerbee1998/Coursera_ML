@@ -92,3 +92,13 @@ print('ou'.join(sr))
 #list of characters
 sl = list(s)
 print(sl)
+
+"""Python text basics(part 4)(cleaning text)"""
+
+s = '    A quick brown fox jumps over the lazy dog   '
+sr = s.split(' ')
+print(sr)
+
+#split without rogue spaces
+sr = s.strip().split(' ')
+print(sr)
